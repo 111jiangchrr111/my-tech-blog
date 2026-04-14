@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Zap, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { getAllPosts, getPostIndex } from '@/lib/posts';
 import { ArticleCard } from '@/components/article/ArticleCard';
 import { TagFilter } from '@/components/article/TagFilter';
@@ -38,12 +39,12 @@ export function HomePage() {
             浏览文章
             <ArrowRight className="h-4 w-4" />
           </a>
-          <a
-            href="/about"
+          <Link
+            to="/about"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border/50 text-muted-foreground font-medium text-sm hover:border-cyan-400/30 hover:text-cyan-400 transition-all duration-200"
           >
             了解更多
-          </a>
+          </Link>
         </div>
       </section>
 

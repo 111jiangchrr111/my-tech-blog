@@ -71,7 +71,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <ErrorBoundary>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />

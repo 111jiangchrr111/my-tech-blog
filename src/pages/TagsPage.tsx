@@ -4,9 +4,11 @@ import { Hash, X } from 'lucide-react';
 import { getPostIndex, getPostsByTag } from '@/lib/posts';
 import { ArticleCard } from '@/components/article/ArticleCard';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function TagsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useLanguage();
   const initialTag = searchParams.get('tag');
   const [selectedTag, setSelectedTag] = useState<string | null>(initialTag);
   const { posts, tags } = getPostIndex();
@@ -34,10 +36,10 @@ export function TagsPage() {
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-2">
           <Hash className="h-6 w-6 text-cyan-400" />
-          <h1 className="text-3xl font-bold text-foreground">标签分类</h1>
+          <h1 className="text-3xl font-bold text-foreground">{t.tags.title}</h1>
         </div>
         <p className="text-muted-foreground ml-9">
-          按技术标签浏览文章，找到你感兴趣的内容
+          {t.home.allTags}
         </p>
       </div>
 
@@ -76,7 +78,6 @@ export function TagsPage() {
       {/* Selected tag indicator */}
       {selectedTag && (
         <div className="flex items-center gap-2 mb-6">
-          <span className="text-sm text-muted-foreground">当前标签：</span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-400 text-sm font-mono border border-cyan-400/20">
             #{selectedTag}
             <button
@@ -87,7 +88,7 @@ export function TagsPage() {
             </button>
           </span>
           <span className="text-sm text-muted-foreground">
-            · {filteredPosts.length} 篇文章
+            · {filteredPosts.length} {t.tags.posts}
           </span>
         </div>
       )}
@@ -101,7 +102,7 @@ export function TagsPage() {
         </div>
       ) : (
         <div className="text-center py-20 text-muted-foreground">
-          <p className="text-lg">该标签下暂无文章</p>
+          <p className="text-lg">{t.home.noResults}</p>
         </div>
       )}
     </div>

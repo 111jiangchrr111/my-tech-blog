@@ -3,12 +3,14 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 import type { TocItem } from '@/types/post';
 import { List } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface TableOfContentsProps {
   items: TocItem[];
 }
 
 export function TableOfContents({ items }: TableOfContentsProps) {
+  const { t } = useLanguage();
   const ids = items.map(item => item.id);
   const activeId = useScrollSpy(ids);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -51,7 +53,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       {/* Desktop sidebar */}
       <nav className="hidden md:block sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin">
         <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-          目录
+          {t.article.tableOfContents}
         </h4>
         <TocList items={items} activeId={activeId} onScroll={scrollTo} />
       </nav>

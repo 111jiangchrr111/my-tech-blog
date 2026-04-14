@@ -3,22 +3,24 @@ import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
 import { getPostBySlug, extractToc, formatDate } from '@/lib/posts';
 import { MarkdownRenderer } from '@/components/markdown/MarkdownRenderer';
 import { TableOfContents } from '@/components/markdown/TableOfContents';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
+  const { language, t } = useLanguage();
   const post = slug ? getPostBySlug(slug) : null;
 
   if (!post) {
     return (
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-32 text-center">
         <h1 className="text-4xl font-bold gradient-text mb-4">404</h1>
-        <p className="text-muted-foreground mb-8">文章未找到</p>
+        <p className="text-muted-foreground mb-8">Article not found</p>
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-cyan-400 hover:underline"
         >
           <ArrowLeft className="h-4 w-4" />
-          返回首页
+          {t.article.back}
         </Link>
       </div>
     );
@@ -34,7 +36,7 @@ export function ArticlePage() {
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-cyan-400 transition-colors mb-8"
       >
         <ArrowLeft className="h-4 w-4" />
-        返回文章列表
+        {t.article.back}
       </Link>
 
       <div className="lg:flex lg:gap-10">
@@ -65,11 +67,11 @@ export function ArticlePage() {
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
-                {formatDate(post.date)}
+                {language === 'zh' ? formatDate(post.date) : new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="h-4 w-4" />
-                约 {post.readingTime} 分钟阅读
+                {post.readingTime} {t.common.minRead}
               </span>
             </div>
           </header>

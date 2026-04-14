@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { formatDate } from '@/lib/posts';
 import type { PostMeta } from '@/types/post';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function ArticleCard({ post }: { post: PostMeta }) {
+  const { t, language } = useLanguage();
+
   return (
     <Link to={`/article/${post.slug}`} className="group block">
       <article className="h-full rounded-xl border border-border/50 bg-card/50 glass neon-border-hover p-5 transition-all duration-300 hover:-translate-y-1">
@@ -33,10 +36,10 @@ export function ArticleCard({ post }: { post: PostMeta }) {
         <div className="flex items-center gap-4 text-xs text-muted-foreground">
           <span className="flex items-center gap-1">
             <Calendar className="h-3.5 w-3.5" />
-            {formatDate(post.date)}
+            {language === 'zh' ? formatDate(post.date) : new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </span>
           <span className="flex items-center gap-1 group-hover:text-cyan-400 transition-colors">
-            阅读全文
+            {language === 'zh' ? '阅读全文' : 'Read more'}
             <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
           </span>
         </div>

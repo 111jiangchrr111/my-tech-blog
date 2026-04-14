@@ -1,13 +1,16 @@
 import { Github, Mail, Rss } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t border-border/50 bg-background/80 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span className="text-cyan-400 font-mono">&gt;_</span>
-            <span>© {new Date().getFullYear()} DevBlog. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} DevBlog. {t.footer.copyright}.</span>
           </div>
           <div className="flex items-center gap-3">
             <a

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { LanguageProvider } from '@/context/LanguageContext';
 import { Layout } from '@/components/layout/Layout';
 import { HomePage } from '@/pages/HomePage';
 import { ArticlePage } from '@/pages/ArticlePage';
@@ -70,18 +71,20 @@ class ErrorBoundary extends Component<
 export default function App() {
   return (
     <ThemeProvider>
-      <ErrorBoundary>
-        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/article/:slug" element={<ArticlePage />} />
-              <Route path="/tags" element={<TagsPage />} />
-              <Route path="/about" element={<AboutPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </ErrorBoundary>
+      <LanguageProvider>
+        <ErrorBoundary>
+          <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/article/:slug" element={<ArticlePage />} />
+                <Route path="/tags" element={<TagsPage />} />
+                <Route path="/about" element={<AboutPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </ErrorBoundary>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

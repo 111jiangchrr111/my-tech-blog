@@ -2,18 +2,21 @@ import { Link, useLocation } from 'react-router-dom';
 import { Terminal, Moon, Sun, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
+import { useLanguage } from '@/context/LanguageContext';
+import { LanguageToggle } from '@/components/ui/LanguageToggle';
 import { cn } from '@/lib/utils';
-
-const navLinks = [
-  { path: '/', label: '首页' },
-  { path: '/tags', label: '标签' },
-  { path: '/about', label: '关于' },
-];
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navLinks = [
+    { path: '/', label: t.nav.home },
+    { path: '/tags', label: t.nav.tags },
+    { path: '/about', label: t.nav.about },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-border/50">
@@ -45,6 +48,7 @@ export function Header() {
 
           {/* Right section */}
           <div className="flex items-center gap-2">
+            <LanguageToggle />
             <button
               onClick={toggleTheme}
               className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors cursor-pointer"

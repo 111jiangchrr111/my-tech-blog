@@ -1,73 +1,127 @@
-# React + TypeScript + Vite
+# 个人技术博客 / Personal Tech Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A modern tech blog built with React, TypeScript, and Tailwind CSS.
+> 使用 React、TypeScript 和 Tailwind CSS 构建的现代技术博客。
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 功能特点 / Features
 
-## React Compiler
+- ⚡ **React 18 + TypeScript** - Modern frontend stack
+- 🎨 **Tailwind CSS + shadcn/ui** - Beautiful dark theme
+- 📝 **Markdown Support** - Write posts in Markdown
+- 🌐 **Bilingual** - Chinese and English UI
+- 📱 **Responsive Design** - Works on all devices
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 开始使用 / Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 安装依赖 / Install Dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 开发模式 / Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+### 构建生产版本 / Build for Production
+
+```bash
+npm run build
+```
+
+### 预览生产版本 / Preview Production Build
+
+```bash
+npm run preview
+```
+
+---
+
+## 写作文章 / Writing Posts
+
+在 `src/content/posts/` 目录下创建 Markdown 文件。
+
+Create Markdown files in `src/content/posts/` directory.
+
+**Example / 示例：**
+
+```markdown
+---
+title: 我的第一篇文章
+date: 2024-01-01
+tags: [React, TypeScript]
+summary: 这是文章的简短描述
+---
+
+# 文章标题
+
+这里是文章内容...
+```
+
+然后在 `src/lib/posts.ts` 中注册文章。
+
+Then register the post in `src/lib/posts.ts`.
+
+---
+
+## 部署 / Deployment
+
+本项目支持两种部署方式：
+
+This project supports two deployment methods:
+
+### GitHub Pages
+
+Push to `main` branch, GitHub Actions will auto-deploy.
+
+推送到 `main` 分支，GitHub Actions 会自动部署。
+
+访问 / Visit: https://111jiangchrr111.github.io/my-tech-blog/
+
+### Vercel
+
+Connect your GitHub repo to Vercel for automatic deployment.
+
+将 GitHub 仓库连接到 Vercel 实现自动部署。
+
+---
+
+## 技术栈 / Tech Stack
+
+| 技术 / Tech | 用途 / Purpose |
+|-------------|----------------|
+| React 18 | UI 框架 / UI Framework |
+| TypeScript | 类型安全 / Type Safety |
+| Vite | 构建工具 / Build Tool |
+| Tailwind CSS | 样式 / Styling |
+| shadcn/ui | 组件库 / Component Library |
+| React Router | 路由 / Routing |
+| Lucide React | 图标 / Icons |
+
+---
+
+## 项目结构 / Project Structure
+
+```
+src/
+├── components/     # React 组件 / React components
+├── content/        # Markdown 文章 / Markdown posts
+├── lib/            # 工具函数 / Utilities
+├── hooks/          # 自定义 Hooks
+├── pages/          # 页面组件 / Page components
+└── types/          # TypeScript 类型定义 / Type definitions
+```
+
+---
+
+## License
+
+MIT

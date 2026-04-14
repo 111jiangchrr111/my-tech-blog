@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 221 39% 11%;
+    --foreground: 215 75% 96%;
+    --card: 240 20% 8%;
+    --card-foreground: 215 75% 96%;
+    --popover: 240 20% 8%;
+    --popover-foreground: 215 75% 96%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 240 20% 5%;
+    --secondary: 270 91% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 10% 20%;
+    --muted-foreground: 215 11% 58%;
+    --accent: 186 100% 50%;
+    --accent-foreground: 240 20% 5%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 186 100% 50%;
+    --radius: 0.625rem;
+    --sidebar-background: 240 20% 6%;
+    --sidebar-foreground: 214 14% 82%;
+    --sidebar-primary: 186 100% 50%;
+    --sidebar-primary-foreground: 240 20% 5%;
+    --sidebar-accent: 240 10% 20%;
+    --sidebar-accent-foreground: 215 75% 96%;
+    --sidebar-border: 240 10% 15%;
+    --sidebar-ring: 186 100% 50%;
+    --neon-cyan: 186 100% 50%;
+    --neon-purple: 270 91% 65%;
+    --neon-green: 142 71% 45%;
+    --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.3);
+    --glow-purple: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 210 20% 98%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 186 100% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 13% 45%;
+    --accent: 186 100% 95%;
+    --accent-foreground: 186 100% 40%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 186 100% 40%;
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 186 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 20% 90%;
+    --sidebar-ring: 186 100% 40%;
+    --neon-cyan: 186 100% 40%;
+    --neon-purple: 270 70% 55%;
+    --neon-green: 142 71% 38%;
+    --glow-cyan: 0 0 10px rgba(0, 200, 220, 0.2);
+    --glow-purple: 0 0 10px rgba(168, 85, 247, 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  code, pre, .font-mono {
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  }
+}
+
+@layer utilities {
+  .neon-text {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+  .neon-text-purple {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  .neon-border {
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.05), inset 0 0 10px rgba(0, 240, 255, 0.02);
+  }
+  .neon-border-hover:hover {
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1), inset 0 0 15px rgba(0, 240, 255, 0.03);
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted));
+    border-radius: 3px;
+  }
+}
+
+/* Code highlight theme */
+.hljs {
+  background: transparent !important;
+  padding: 1rem !important;
+}
+
+.dark .hljs {
+  color: #c9d1d9;
+}
+
+/* Markdown content styles */
+.prose-cyber {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.prose-cyber h1, .prose-cyber h2, .prose-cyber h3,
+.prose-cyber h4, .prose-cyber h5, .prose-cyber h6 {
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose-cyber h1 { font-size: 2rem; }
+.prose-cyber h2 { font-size: 1.5rem; border-bottom: 1px solid hsl(var(--border)); padding-bottom: 0.5rem; }
+.prose-cyber h3 { font-size: 1.25rem; }
+
+.prose-cyber p {
+  margin-bottom: 1.25em;
+}
+
+.prose-cyber a {
+  color: hsl(var(--neon-cyan));
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.prose-cyber a:hover {
+  border-bottom-color: hsl(var(--neon-cyan));
+}
+
+.prose-cyber code {
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.875em;
+  background: hsl(var(--muted));
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.prose-cyber pre {
+  background: hsl(240 20% 6%) !important;
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.prose-cyber pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.prose-cyber blockquote {
+  border-left: 3px solid hsl(var(--neon-cyan));
+  padding-left: 1rem;
+  margin: 1.5em 0;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+.prose-cyber ul, .prose-cyber ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25em;
+}
+
+.prose-cyber li {
+  margin-bottom: 0.5em;
+}
+
+.prose-cyber table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+
+.prose-cyber th, .prose-cyber td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.prose-cyber th {
+  background: hsl(var(--muted));
+  font-weight: 600;
+}
+
+.prose-cyber img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5em 0;
+}
+
+.prose-cyber hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 2em 0;
+}

@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+*.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# WorkBuddy
+.workbuddy/
+
+# Build logs
+build-log.txt
+build-output.txt
+
+# Environment
+.env
+.env.local

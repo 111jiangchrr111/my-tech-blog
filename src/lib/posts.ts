@@ -24,13 +24,13 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; content
     const m = line.match(/^(\w[\w-]*)\s*:\s*(.*)$/);
     if (!m) continue;
     const key = m[1];
-    let val: unknown = m[2].trim();
+    let val: string | string[] = m[2].trim();
     if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
     else if (val.startsWith('[') && val.endsWith(']')) {
       val = val
         .slice(1, -1)
         .split(',')
-        .map((s: string) => s.trim().replace(/^['"]|['"]$/g, ''))
+        .map(s => s.trim().replace(/^['"]|['"]$/g, ''))
         .filter(Boolean);
     }
     fm[key] = val;
@@ -45,10 +45,10 @@ function parsePost(slug: string, rawContent: string): Post {
 
   return {
     slug,
-    title: data.title || slug,
-    date: data.date || new Date().toISOString().split('T')[0],
-    tags: data.tags || [],
-    summary: data.summary || '',
+    title: String(data.title || slug),
+    date: String(data.date || new Date().toISOString().split('T')[0]),
+    tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+    summary: String(data.summary || ''),
     content,
     readingTime,
   };

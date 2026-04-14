@@ -4,6 +4,9 @@ import tsTypesRaw from '../content/posts/typescript-advanced-types.md?raw';
 import viteBuildRaw from '../content/posts/vite-build-optimization.md?raw';
 import cicdRaw from '../content/posts/cicd-pipeline-guide.md?raw';
 import jsAsyncRaw from '../content/posts/js-async-programming.md?raw';
+import htmlGuideRaw from '../content/posts/html-basics-guide.md?raw';
+import cssGuideRaw from '../content/posts/css-basics-guide.md?raw';
+import jsGuideRaw from '../content/posts/javascript-basics-guide.md?raw';
 
 const rawPosts: Record<string, string> = {
   '../content/posts/react-18-guide.md': reactGuideRaw,
@@ -11,6 +14,9 @@ const rawPosts: Record<string, string> = {
   '../content/posts/vite-build-optimization.md': viteBuildRaw,
   '../content/posts/cicd-pipeline-guide.md': cicdRaw,
   '../content/posts/js-async-programming.md': jsAsyncRaw,
+  '../content/posts/html-basics-guide.md': htmlGuideRaw,
+  '../content/posts/css-basics-guide.md': cssGuideRaw,
+  '../content/posts/javascript-basics-guide.md': jsGuideRaw,
 };
 
 let cachedIndex: { posts: PostMeta[]; tags: { name: string; count: number }[] } | null = null;
